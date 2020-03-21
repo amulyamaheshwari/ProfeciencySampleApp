@@ -3,10 +3,10 @@ package com.amulya.test.viewmodel;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
+
 import com.amulya.test.interfaces.Api;
-import com.amulya.test.pojo.DataModel;
 import com.amulya.test.pojo.RootDataModel;
-import java.util.List;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -17,7 +17,6 @@ public class ContentViewModel extends ViewModel {
 
     //this is the data that we will fetch asynchronously
     private MutableLiveData<RootDataModel> rootDataModel;
-    private MutableLiveData<List<DataModel>> dropBoxDataList;
 
     //we will call this method to get the data
     public LiveData<RootDataModel> getData() {
@@ -35,6 +34,7 @@ public class ContentViewModel extends ViewModel {
 
     //This method is using Retrofit to get the JSON data from URL
     private void loadDropBoxData() {
+        System.out.println("<<<<<<<<<<<calling>>>>..");
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(Api.BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create())
